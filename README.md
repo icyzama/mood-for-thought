@@ -15,7 +15,7 @@ Visitors can explore an idea before signing in. An account is needed to save pro
 
 [View the desktop and mobile designs in Figma](https://www.figma.com/design/5CgZXZnxcYGYLq6WKKixxS)
 
-The design currently covers the brief, direction choices, direction detail, and sign-in-to-save flow. The bakery brief shown in the screens is example content.
+The clickable prototype covers the brief, brief confirmation, direction choices, direction detail, sign-in-to-save flow, and Projects screen in desktop and mobile layouts. The bakery brief shown in the screens is example content.
 
 ## Planned tech stack
 
