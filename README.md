@@ -30,7 +30,11 @@ The clickable prototype covers the brief, brief confirmation, direction choices,
 
 ## Status
 
-Design prototype complete. The repository now has a planning scaffold; application development has not started.
+Design prototype complete. A minimal Next.js starter is ready for application development.
+
+## Run locally
+
+Install Node.js, then run `npm install` and `npm run dev` in the project folder. Open http://localhost:3000 in your browser. The landing page starts in `src/app/page.tsx`.
 
 ## Build guide
 
