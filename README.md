@@ -30,4 +30,9 @@ The clickable prototype covers the brief, brief confirmation, direction choices,
 
 ## Status
 
-Design prototype complete. Application development has not started.
+Design prototype complete. The repository now has a planning scaffold; application development has not started.
+
+## Build guide
+
+- [File structure](docs/file-structure.md): where to put screens, features, shared code, assets, and migrations.
+- [Architecture](docs/architecture.md): user flow, system boundaries, data model, and implementation order.
