@@ -1,19 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
+import { emptyBrief, useBriefDraft } from "@/features/briefs/brief-draft";
 
 export default function Home() {
-  const [brief, setBrief] = useState("");
-  const [types, setTypes] = useState(["Branding"]);
+  const router = useRouter();
+  const { draft: { brief, types }, setDraft } = useBriefDraft();
   const [menuOpen, setMenuOpen] = useState(false);
   const [notice, setNotice] = useState("");
 
   function resetBrief() {
-    setBrief("");
-    setTypes(["Branding"]);
+    setDraft(emptyBrief);
     setNotice("");
     setMenuOpen(false);
     document.getElementById("brief")?.focus();
+  }
+
+  function previewDirections(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!brief.trim()) {
+      setNotice("Describe your idea before previewing directions.");
+      document.getElementById("brief")?.focus();
+      return;
+    }
+
+    setNotice("");
+    router.push("/create/directions");
   }
 
   return (
@@ -42,11 +55,45 @@ export default function Home() {
               <span className="sticker composer-sticker"><span className="desktop-title">YOUR CREATIVE BRIEF</span><span className="mobile-title">YOUR BRIEF</span></span>
               <h2 id="brief-title"><span className="desktop-title">Tell us what you’re making</span><span className="mobile-title">What’s the idea?</span></h2>
               <p className="hint"><span className="desktop-title">A sentence or a brain dump both work.</span><span className="mobile-title">No perfect prompt needed.</span></p>
-              <form onSubmit={(event) => { event.preventDefault(); setNotice("Your brief is ready. AI direction generation is coming next."); }}>
+              <form onSubmit={previewDirections}>
                 <label className="sr-only" htmlFor="brief">Describe your creative idea</label>
-                <textarea id="brief" required value={brief} onChange={(event) => { setBrief(event.target.value); setNotice(""); }} placeholder="I’m building a warm, modern brand for a neighborhood bakery. I want it to feel welcoming and handmade, but not too rustic." />
-                <fieldset className="project-types"><legend>TYPE OF PROJECT</legend><div>{["Branding", "Packaging"].map((type) => <button key={type} type="button" className={types.includes(type) ? "type-button selected" : "type-button"} aria-pressed={types.includes(type)} onClick={() => setTypes((current) => current.includes(type) ? current.filter((item) => item !== type) : [...current, type])}>{type.toUpperCase()}</button>)}</div></fieldset>
-                <div className="form-actions"><button className="submit-button" type="submit">FIND MY DIRECTION <span aria-hidden="true">↗</span></button></div>
+                <textarea
+                  id="brief"
+                  required
+                  value={brief}
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    setDraft((draft) => ({ ...draft, brief: value }));
+                    setNotice("");
+                  }}
+                  placeholder="I’m building a warm, modern brand for a neighborhood bakery. I want it to feel welcoming and handmade, but not too rustic."
+                />
+                <fieldset className="project-types">
+                  <legend>TYPE OF PROJECT</legend>
+                  <div>
+                    {["Branding", "Packaging"].map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        className={types.includes(type) ? "type-button selected" : "type-button"}
+                        aria-pressed={types.includes(type)}
+                        onClick={() => setDraft((draft) => ({
+                          ...draft,
+                          types: draft.types.includes(type)
+                            ? draft.types.filter((item) => item !== type)
+                            : [...draft.types, type],
+                        }))}
+                      >
+                        {type.toUpperCase()}
+                      </button>
+                    ))}
+                  </div>
+                </fieldset>
+                <div className="form-actions">
+                  <button className="submit-button" type="submit">
+                    PREVIEW DIRECTIONS <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
               </form>
               {notice && <p className="notice" role="status">{notice}</p>}
             </section>
