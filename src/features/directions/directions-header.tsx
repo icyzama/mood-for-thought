@@ -6,7 +6,7 @@ import { useState } from "react";
 import { emptyBrief, useBriefDraft } from "@/features/briefs/brief-draft";
 import styles from "./directions.module.css";
 
-export function DirectionsHeader() {
+export function DirectionsHeader({ showAllDirections = false }: { showAllDirections?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const { setDraft } = useBriefDraft();
@@ -38,7 +38,12 @@ export function DirectionsHeader() {
         aria-label="Main navigation"
       >
         <span className={styles.projects}>PROJECTS <small>COMING SOON</small></span>
-        <Link href="/#how-it-works" onClick={() => setMenuOpen(false)}>HOW IT WORKS</Link>
+        <Link
+          href={showAllDirections ? "/create/directions" : "/#how-it-works"}
+          onClick={() => setMenuOpen(false)}
+        >
+          {showAllDirections ? "ALL DIRECTIONS" : "HOW IT WORKS"}
+        </Link>
         <button type="button" className="new-button" onClick={startNewBrief}>+ NEW</button>
       </nav>
     </header>

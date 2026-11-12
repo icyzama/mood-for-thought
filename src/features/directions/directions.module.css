@@ -156,10 +156,14 @@
 }
 
 .explore {
+  display: block;
+  align-content: center;
   margin-top: auto;
   min-height: 26px;
+  color: inherit;
   cursor: pointer;
   font: 700 10px 'IBM Plex Mono', monospace;
+  text-decoration: none;
   text-transform: uppercase;
 }
 
@@ -183,33 +187,6 @@
   font: 700 11px 'IBM Plex Mono', monospace;
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-.dialog {
-  width: min(480px, calc(100% - 40px));
-  max-height: calc(100% - 40px);
-  margin: auto;
-  padding: 28px;
-  overflow: auto;
-  color: var(--ink);
-  border: 1.5px solid var(--ink);
-  border-radius: 7px;
-  background: var(--paper);
-}
-
-.dialog::backdrop {
-  background: rgb(23 21 19 / 65%);
-}
-
-.dialog h2 {
-  margin-top: 16px;
-  font-size: 30px;
-  font-weight: 800;
-}
-
-.dialog p {
-  margin: 12px 0 22px;
-  line-height: 1.5;
 }
 
 @media (max-width: 1000px) {

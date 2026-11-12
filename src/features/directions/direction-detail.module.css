@@ -1,0 +1,402 @@
+.content {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 39px 5.2% 60px;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: 20px;
+}
+
+.counter {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-width: 168px;
+  text-align: left;
+  font-size: 9px;
+  transform: rotate(2deg);
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  font-size: clamp(42px, 4.45vw, 64px);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.title::after {
+  display: block;
+  width: min(100%, 422px);
+  height: 10px;
+  margin-top: 8px;
+  background: var(--board);
+  content: "";
+}
+
+.subtitle {
+  align-self: start;
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.save {
+  justify-self: end;
+  min-width: 212px;
+  min-height: 42px;
+  margin-top: 7px;
+  padding-inline: 16px;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: var(--yellow);
+  font: 700 12px 'IBM Plex Mono', monospace;
+  text-align: left;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 2.07fr) minmax(0, 1fr);
+  gap: 29px;
+  margin-top: 30px;
+}
+
+.panel {
+  position: relative;
+  min-width: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 7px;
+  background: #fff;
+}
+
+.panelLabel {
+  position: absolute;
+  top: -16px;
+  left: 20px;
+  min-width: 141px;
+  font-size: 9px;
+  transform: rotate(2deg);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(0, 360fr) minmax(0, 424fr);
+  grid-template-rows: minmax(127px, auto) minmax(134px, auto) minmax(160px, auto);
+  gap: 15px;
+  padding: 27px 24px 24px;
+}
+
+.board .heroArt {
+  grid-row: span 2;
+  min-height: 276px;
+  padding: 91px 20px 18px;
+}
+
+.board .heroArt::before {
+  top: 18px;
+  left: 19px;
+  width: 23%;
+  max-width: 80px;
+  height: 59px;
+}
+
+.board .heroArt::after {
+  top: 19px;
+  right: 7%;
+  width: min(20%, 65px);
+  height: 65px;
+}
+
+.content .board .heroArt p {
+  font-size: clamp(31px, 3.7vw, 53px);
+  line-height: 1.19;
+}
+
+.palette {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px;
+  border-radius: 3px;
+  background: var(--green);
+}
+
+.palette h3 {
+  font: 700 17px 'Bricolage Grotesque', sans-serif;
+  text-transform: uppercase;
+}
+
+.swatches {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swatches li {
+  width: min(23%, 60px);
+  height: 30px;
+  border: 1px solid rgb(23 21 19 / 12%);
+}
+
+.typography {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 20px;
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: #fffdf6;
+}
+
+.typography > span {
+  font: 800 clamp(40px, 5vw, 72px)/1 'Bricolage Grotesque', sans-serif;
+}
+
+.typography h3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.typography p {
+  margin-top: 4px;
+  color: #706e68;
+  font-size: 13px;
+}
+
+.feeling {
+  grid-column: 1 / -1;
+  padding: 20px 23px;
+  color: white;
+  border-radius: 3px;
+  background: var(--ink);
+}
+
+.mono {
+  font: 700 10px 'IBM Plex Mono', monospace;
+}
+
+.feeling h3 {
+  color: var(--yellow);
+}
+
+.feeling p {
+  margin-top: 12px;
+  font: 700 24px/1.2 'Bricolage Grotesque', sans-serif;
+}
+
+.notes {
+  padding: 27px 23px 24px;
+}
+
+.notes .panelLabel {
+  min-width: 150px;
+  background: var(--yellow);
+  transform: rotate(-2deg);
+}
+
+.notesToggle {
+  display: none;
+}
+
+.notesContent h3 {
+  font: 700 26px/1.2 'Bricolage Grotesque', sans-serif;
+}
+
+.notesContent > p {
+  margin-top: 13px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.noteForm {
+  margin-top: clamp(24px, 4.4vw, 64px);
+}
+
+.noteForm textarea {
+  height: 100px;
+  margin-top: 14px;
+  padding: 12px 13px;
+  font-size: 15px;
+}
+
+.noteForm button {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.noteHelp,
+.noteStatus {
+  color: #5d5b54;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.noteHelp,
+.noteStatus:not(:empty) {
+  margin-top: 8px;
+}
+
+.notesContent .references {
+  min-height: 64px;
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  background: var(--paper);
+  font: 700 11px/1.35 'IBM Plex Mono', monospace;
+}
+
+@media (max-width: 900px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .content {
+    padding: 28px 20px 18px;
+  }
+
+  .counter {
+    grid-column: 1;
+    align-self: center;
+    min-width: 0;
+    width: min(100%, 164px);
+  }
+
+  .save {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 103px;
+    min-height: 31px;
+    margin-top: 0;
+    padding-inline: 10px;
+    font-size: 10px;
+  }
+
+  .title {
+    margin-top: 13px;
+    font-size: clamp(35px, 11vw, 43px);
+    line-height: 1.26;
+  }
+
+  .title::after {
+    display: none;
+  }
+
+  .title span span {
+    display: block;
+    width: 100%;
+    padding-inline: 2px;
+    background: var(--board);
+  }
+
+  .subtitle {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .workspace {
+    gap: 28px;
+    margin-top: 33px;
+  }
+
+  .board {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 14px;
+    padding: 14px 15px 15px;
+  }
+
+  .board .panelLabel {
+    left: 17px;
+  }
+
+  .board .heroArt {
+    grid-row: auto;
+    min-height: 196px;
+    padding: 78px 16px 16px;
+  }
+
+  .board .heroArt::before {
+    top: 14px;
+    left: 13px;
+    width: 20%;
+    max-width: 62px;
+    height: 43px;
+  }
+
+  .board .heroArt::after {
+    top: 14px;
+    right: 4%;
+    width: min(20%, 60px);
+    height: 50px;
+  }
+
+  .content .board .heroArt p {
+    font-size: clamp(30px, 10.8vw, 42px);
+  }
+
+  .palette {
+    padding: 11px;
+  }
+
+  .swatches {
+    gap: 9px;
+  }
+
+  .swatches li {
+    width: min(23%, 51px);
+    height: 38px;
+  }
+
+  .typography,
+  .notes .panelLabel {
+    display: none;
+  }
+
+  .feeling {
+    min-height: 79px;
+    padding: 11px 13px;
+  }
+
+  .feeling p {
+    margin-top: 8px;
+    font-size: 18px;
+  }
+
+  .notes {
+    padding: 0;
+  }
+
+  .notesToggle {
+    display: grid;
+    gap: 7px;
+    width: 100%;
+    min-height: 76px;
+    padding: 14px 18px;
+    cursor: pointer;
+    font: 700 18px 'Bricolage Grotesque', sans-serif;
+    text-align: left;
+  }
+
+  .notesContent {
+    display: none;
+    padding: 18px;
+    border-top: 1px solid var(--ink);
+  }
+
+  .notesContent[data-expanded="true"] {
+    display: block;
+  }
+}
